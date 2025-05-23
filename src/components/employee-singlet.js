@@ -6,6 +6,12 @@ import './confirmation-dialog.js';
 
 class EmployeeSinglet extends LitElement {
   static styles = css`
+    label.table{
+      display:none;
+    }
+    label.grid{
+      display:inline-block;
+    }
   `;
 
   static properties = {
@@ -62,6 +68,7 @@ class EmployeeSinglet extends LitElement {
      * @type {'Junior' | 'Medior' | 'Senior'}
      */
     position: {type: String},
+    view: { type: String },
   };
 
   constructor() {
@@ -75,18 +82,43 @@ class EmployeeSinglet extends LitElement {
     this.email = '';
     this.department = '';
     this.position = '';
+    this.view = 'table';
   }
 
   render() {
     return html`
-      <td>${this.firstName}</td>
-      <td>${this.lastName}</td>
-      <td>${this.employmentDate}</td>
-      <td>${this.birthDate}</td>
-      <td>${this.phone}</td>
-      <td>${this.email}</td>
-      <td>${this.department}</td>
-      <td>${this.position}</td>
+      <td>
+        <label class=${this.view}>${localize('first_name')}</label>
+        ${this.firstName}
+      </td>
+      <td>
+        <label class=${this.view}>${localize('last_name')}</label>
+        ${this.lastName}
+      </td>
+      <td>
+        <label class=${this.view}>${localize('employment_date')}</label>
+        ${this.employmentDate}
+      </td>
+      <td>
+        <label class=${this.view}>${localize('birth_date')}</label>
+        ${this.birthDate}
+      </td>
+      <td>
+        <label class=${this.view}>${localize('phone')}</label>
+        ${this.phone}
+      </td>
+      <td>
+        <label class=${this.view}>${localize('email')}</label>
+        ${this.email}
+      </td>
+      <td>
+        <label class=${this.view}>${localize('department')}</label>
+        ${this.department}
+      </td>
+      <td>
+        <label class=${this.view}>${localize('position')}</label>
+        ${this.position}
+      </td>
       <td>
         <a href="/edit/${this.id}" data-link>
           ${localize('edit')}

@@ -88,6 +88,7 @@ class EmployeeList extends LitElement {
         department=${emp.department}
         position=${emp.position}
         class=${this.view}
+        view=${this.view} 
       ></employee-singlet>`
     )}</div>`;
   }
