@@ -6,11 +6,27 @@ import './confirmation-dialog.js';
 
 class EmployeeSinglet extends LitElement {
   static styles = css`
-    label.table{
-      display:none;
-    }
-    label.grid{
-      display:inline-block;
+    div {
+      &.table{
+        label{
+          display:none
+        }
+        display: table-cell;
+      }
+      &.grid{
+        padding-left: 6px;
+        label{
+          font-size: smaller;
+          display:block;
+          text-align: left;
+          color: #888;
+          & + span {
+          display:block;
+          text-align: left;
+            padding-left: 12px
+          }
+        }
+      }
     }
   `;
 
@@ -19,55 +35,55 @@ class EmployeeSinglet extends LitElement {
      * 
      * @type {Number}
      */
-    id: {type: Number},
+    id: { type: Number },
 
     /**
      * 
      * @type {String}
      */
-    firstName: {type: String},
-    
+    firstName: { type: String },
+
     /**
      * 
      * @type {String}
      */
-    lastName: {type: String},
-    
+    lastName: { type: String },
+
     /**
      * 
      * @type {Date}
      */
-    employmentDate: {type: String},
-    
+    employmentDate: { type: String },
+
     /**
      * 
      * @type {Date}
      */
-    birthDate: {type: String},
+    birthDate: { type: String },
 
     /**
      * 
      * @type {number}
      */
-    phone: {type: Number},
-    
+    phone: { type: Number },
+
     /**
      * 
      * @type {String}
      */
-    email: {type: String},
-    
+    email: { type: String },
+
     /**
      * 
      * @type {'Analytics' | 'Tech'}
      */
-    department: {type: String},
+    department: { type: String },
 
     /**
      * 
      * @type {'Junior' | 'Medior' | 'Senior'}
      */
-    position: {type: String},
+    position: { type: String },
     view: { type: String },
   };
 
@@ -87,46 +103,46 @@ class EmployeeSinglet extends LitElement {
 
   render() {
     return html`
-      <td>
-        <label class=${this.view}>${localize('first_name')}</label>
-        ${this.firstName}
-      </td>
-      <td>
-        <label class=${this.view}>${localize('last_name')}</label>
-        ${this.lastName}
-      </td>
-      <td>
-        <label class=${this.view}>${localize('employment_date')}</label>
-        ${this.employmentDate}
-      </td>
-      <td>
-        <label class=${this.view}>${localize('birth_date')}</label>
-        ${this.birthDate}
-      </td>
-      <td>
-        <label class=${this.view}>${localize('phone')}</label>
-        ${this.phone}
-      </td>
-      <td>
-        <label class=${this.view}>${localize('email')}</label>
-        ${this.email}
-      </td>
-      <td>
-        <label class=${this.view}>${localize('department')}</label>
-        ${this.department}
-      </td>
-      <td>
-        <label class=${this.view}>${localize('position')}</label>
-        ${this.position}
-      </td>
-      <td>
+      <div class=${this.view}>
+        <label for="first_name">${localize('first_name')}</label>
+        <span id="first_name">${this.firstName}</span>
+      </div>
+      <div class=${this.view}>
+        <label for="last_name">${localize('last_name')}</label>
+        <span id="last_name">${this.lastName}</span>
+      </div>
+      <div class=${this.view}>
+        <label for="employment_date">${localize('employment_date')}</label>
+        <span id="employment_date">${this.employmentDate}</span>
+      </div>
+      <div class=${this.view}>
+        <label for="birth_date">${localize('birth_date')}</label>
+        <span id="birth_date">${this.birthDate}</span>
+      </div>
+      <div class=${this.view}>
+        <label for="phone">${localize('phone')}</label>
+        <span id="phone">${this.phone}</span>
+      </div>
+      <div class=${this.view}>
+        <label for="email">${localize('email')}</label>
+        <span id="email">${this.email}</span>
+      </div>
+      <div class=${this.view}>
+        <label for="department">${localize('department')}</label>
+        <span id="department">${this.department}</span>
+      </div>
+      <div class=${this.view}>
+        <label for="position">${localize('position')}</label>
+        <span id="position">${this.position}</span>
+      </div>
+      <div id="actions">
         <a href="/edit/${this.id}" data-link>
           ${localize('edit')}
         </a>
         <button type=button @click="${() => this.confirmDelete(this.id)}">
           ${localize('delete')}
         </button>
-      </td>
+      </div>
     `;
   }
 
